@@ -16,7 +16,8 @@ echo -e "Horovod Elastic started.\n"
 
 echo -e "Fuzzing start:, logs can be found in ../horovod_elastic/fuzzlog.log."
 echo -e "Press ctl+D to stop."
-python3 ../horovod_elastic/updateHosts.py > ../horovod_elastic/fuzz.log
+# python3 ../horovod_elastic/update_hosts.py > ../horovod_elastic/fuzz.log
+python3 ../horovod_elastic/fuzz.py > ../horovod_elastic/fuzz.log
 
 
 echo -e "Fuzz testing ends.\n"
