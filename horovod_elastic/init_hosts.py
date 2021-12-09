@@ -26,7 +26,7 @@ def write_hosts_to_script(ids, hosts, mode="override", action=None):
             lines.append(line)
         
     if mode == "update":
-        with open('../horovod_elastic/discover_hosts.sh', "r") as f:
+        with open('./discover_hosts.sh', "r") as f:
             lines = f.readlines()
             f.close()
         if action == 1:
@@ -44,7 +44,7 @@ def write_hosts_to_script(ids, hosts, mode="override", action=None):
                     tmp.append(i)
             lines = tmp
     
-    with open("../horovod_elastic/discover_hosts.sh", "w") as f:
+    with open("./discover_hosts.sh", "w") as f:
         f.writelines(lines)
         f.close()
 

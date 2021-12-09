@@ -7,7 +7,7 @@ UPDATE_TIME_INTERVAL = 3
 
 
 def load_curr_hosts():
-    child = subprocess.Popen(['../horovod_elastic/discover_hosts.sh'], stdout=subprocess.PIPE)
+    child = subprocess.Popen(['./discover_hosts.sh'], stdout=subprocess.PIPE)
     stdout, _ = child.communicate()
     _curr_hosts = str(stdout, encoding='utf-8').split("\n")[:-1] 
     curr_hosts = {}
@@ -33,9 +33,9 @@ def mutate(curr_hosts, all_hosts, action):
     return ids
 
 
-def update_hosts():
-# if __name__ == "__main__":
-    all_hosts = load_all_hosts('../horovod_elastic/hosts.json')
+# def update_hosts():
+if __name__ == "__main__":
+    all_hosts = load_all_hosts('./hosts.json')
     
     curr_hosts = load_curr_hosts()
     print(curr_hosts)
