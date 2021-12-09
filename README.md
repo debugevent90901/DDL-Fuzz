@@ -10,21 +10,15 @@ Experimental fuzzer for distributed deep learning systems.
 
 ## Target
 
-Proposed for Horovod Elastic, Horovod, Pytorch Distributed, Pytorch Nightning.
-
-Currently implementing its function for Horovod Elastic
+Designed for Horovod Elastic, Horovod with Pytorch,
 
 
 
 ## Repo Structure
 
-**./bin:** Executable shell scripts to launch the fuzzer
+**./horovod_pytorch:** Fuzzer for Horovod, data parallel mode. Designed for single machine with multiple GPUs, but should also support multiple hosts with multiple GPUs.
 
-**./data:** Training/test data used by the fuzzer
-
-**./horovod:** Fuzzer for Horovod, data parallel, single machine with multiple GPUs
-
-**./horovod_elastic:** Fuzzer for Horovod Elastic, distributed cluster 
+**./horovod_elastic:** Fuzzer for Horovod Elastic, must run on distributed clusters.
 
 
 
