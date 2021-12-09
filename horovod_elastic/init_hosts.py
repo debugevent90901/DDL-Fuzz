@@ -52,9 +52,10 @@ def write_hosts_to_script(ids, hosts, mode="override", action=None):
 if __name__ == "__main__":
     all_hosts = load_all_hosts('./hosts.json')
     num_all_hosts = len(all_hosts)
-    num_init_hosts = np.random.randint(1, num_all_hosts+1)
+    # num_init_hosts = np.random.randint(1, num_all_hosts+1)
     # print(num_init_hosts)
-    init_hosts = np.random.choice(range(num_all_hosts), num_init_hosts, replace=False)
+    # init_hosts = np.random.choice(range(num_all_hosts), num_init_hosts, replace=False)
+    init_hosts = [0, 1, 2, 3]
     # print(init_hosts)
 
     write_hosts_to_script(init_hosts, all_hosts, mode="override")

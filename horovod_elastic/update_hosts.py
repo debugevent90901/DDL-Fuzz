@@ -3,7 +3,7 @@ import time, subprocess
 import numpy as np
 
 # 5s
-UPDATE_TIME_INTERVAL = 3
+UPDATE_TIME_INTERVAL = 4
 
 
 def load_curr_hosts():
