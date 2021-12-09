@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo -e "This is a script for automatically setting up a cluster for distributed deep learning system."
 echo -e "Work for Horovod Elastic with Pytorch.\n\n"
 

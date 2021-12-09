@@ -3,23 +3,23 @@ echo -e "This is a fuzzer for distributed DL systems"
 echo -e "Work for Horovod with Pytorch."
 echo -e "Mode: Horovod data parallel, multiple GPUs on single machine.\n\n"
 
+# testing configuration:
+# cloud GPU vendor: matpool.com, single host, NVIDIA Tesla K80 x 4
+# horovod v0.22.1 Pytorch v1.8.1
 
-echo -e "Fuzzing Start: generate inputs in ../horovod/inputs."
-for seed_file in $(ls ../horovod/seeds)
-do  
-    echo -e ${seed_file}
-    python3 ../horovod/mutate.py ../horovod/seeds/${seed_file} > ../horovod/logs/mutate.log
-done
-echo -e "Inputs generation finished, see mutate.log in ../horovod/logs for details. \n"
+echo -e "Start fuzzing ... "
 
+int=1
 
-echo -e "Start to run each input, logs can be found in ../horovod/logs."
-for input_file in $(ls ../horovod/inputs)
+# number of executing unittests: 10
+while (( $int <= 10 ))
 do
-    echo -e "Test ../horovod/inputs/${input_file} start. "
-    # horovodrun -np 4 python3 ../horovod/inputs/${input_file} > ../horovod/logs/${input_file}.output
-    echo -e "Test ../horovod/inputs/${input_file} finished, see corresponding log in ../horovod/logs for detail."
+    echo -e executing unittest $int
+    python3 fuzz.py $int
+    # horovodrun -np 4 pytest -v template.py
+    # horovodrun -np 4 pytest -v template.py &> ./logs/run$int.log 
+    python3 test.py &> ./logs/run$int.log 
+    let "int++"
 done
-
 
 echo -e "Fuzzing ends.\n"

@@ -1,0 +1,14 @@
+torch.manual_seed()
+numpy.random.seed()
+random int
+random int
+N D_in H D_out
+lr, momentum, weight_decay
+lr, momentum, weight_decay
+Conv2d0 Conv2d1 Conv2d2
+Conv2d0 Conv2d1 Conv2d2
+rnd1 rnd2 rnd3 rnd4
+rnd1 rnd2 rnd3 rnd4
+rnd1 rnd2 rnd3
+rnd1 rnd2 rnd3 
+rnd1 rnd2 rnd3 rnd4 rnd5 rnd6 rnd7 rnd8

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo -e "This is a fuzzer for distributed DL systems"
 echo -e "Work for Horovod with Pytorch."
 echo -e "Mode: Horovod Elastic, multiple GPUs on multiple hosts.\n\n"

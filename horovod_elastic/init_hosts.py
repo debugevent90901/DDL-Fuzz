@@ -18,7 +18,7 @@ def load_all_hosts(hostfile):
 
 def write_hosts_to_script(ids, hosts, mode="override", action=None):
     if mode == "override":
-        lines = ["#!/bin/bash\n"]
+        lines = ["#!/bin/sh\n"]
         for i in ids:
             line = 'echo -e '
             host, slots = hosts[i][0], str(hosts[i][1])
