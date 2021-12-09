@@ -2,9 +2,10 @@ from init_hosts import load_all_hosts, write_hosts_to_script
 import time, subprocess
 import numpy as np
 
-# 5s
-UPDATE_TIME_INTERVAL = 4
-
+UPDATE_TIME_INTERVAL = 8
+PROBABLITY_TO_KILL = 0.75
+LOCAL_HOST_ID = 1
+KILL_WORKER_ENABLE = 0
 
 def load_curr_hosts():
     child = subprocess.Popen(['./discover_hosts.sh'], stdout=subprocess.PIPE)
@@ -32,18 +33,32 @@ def mutate(curr_hosts, all_hosts, action):
 
     return ids
 
+def kill_worker(host):
+    subprocess.run(['ssh', 'root@'+host, '"pkill -f python'])
+
 
 # def update_hosts():
 if __name__ == "__main__":
     all_hosts = load_all_hosts('./hosts.json')
-    
+    # print(all_hosts)
     curr_hosts = load_curr_hosts()
-    print(curr_hosts)
+    # print(curr_hosts)
     # i = 10
-    # while(i>0):
-    while(1):
+    while(i>0):
+    # while(1):
         time.sleep(UPDATE_TIME_INTERVAL)
         # i -= 1
+        if KILL_WORKER_ENABLE:
+            # only kill a worker if some probablity requirement is met
+            p = np.random.uniform()
+            if p >= PROBABLITY_TO_KILL:
+                candidants = list(curr_hosts.keys())
+                if LOCAL_HOST_ID in candidants:
+                    candidants.remove(LOCAL_HOST_ID)
+                worker_to_kill = np.random.choice(candidants)
+                host = curr_hosts[worker_to_kill][0]
+                kill_worker(host)
+
         curr_hosts = load_curr_hosts()
         # print(curr_hosts)
         if (len(curr_hosts) == len(all_hosts)):
